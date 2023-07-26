@@ -8,7 +8,16 @@ export default function Home() {
   const [isFullScreen, setIsFullScreen] = useState(false)
 
   const router = useRouter()
-  const url = router.query.url
+  const url = router.asPath.split('?')[1]
+  const token = router.query.token
+
+  let epubUrl = ''
+
+  if (url && token) {
+    const url2 = url.replace(/^url=/, '')
+
+    epubUrl = url2 + '?alt=media&' + 'token=' + token
+  }
 
   const toggleFullScreen = () => {
     setIsFullScreen((fullscreen) => !fullscreen)
@@ -23,11 +32,13 @@ export default function Home() {
       </Head>
       <main className='w-full min-h-screen relative'>
         <Header toggleView={toggleFullScreen} />
-        <Reader
-          urlQueryParam={url}
-          fullScreen={isFullScreen}
-          cancelFullScreen={toggleFullScreen}
-        />
+        {epubUrl && (
+          <Reader
+            urlQueryParam={epubUrl}
+            fullScreen={isFullScreen}
+            cancelFullScreen={toggleFullScreen}
+          />
+        )}
       </main>
     </Fragment>
   )
