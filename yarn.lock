@@ -1829,10 +1829,10 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react-reader@^0.21.2":
-  "integrity" "sha512-QC2748QzyHboxbmvEod+8VFuhiybWcCE6+E18zLAjWxiJ6EIyVbIQxSnFpdMdxZu0NUwMGg3t5FVJLFT/6chOA=="
-  "resolved" "https://registry.npmjs.org/react-reader/-/react-reader-0.21.2.tgz"
-  "version" "0.21.2"
+"react-reader@^1.2.1":
+  "integrity" "sha512-E7WGgRacRW0vCRu/Yp7GwJZTfNSPG37m5RRvmC/NlYzNWdsBWCsuxTUQzNsa7DqJRW9fkaXqsaPNo0sqiVrXzg=="
+  "resolved" "https://registry.npmjs.org/react-reader/-/react-reader-1.2.1.tgz"
+  "version" "1.2.1"
   dependencies:
     "epubjs" "^0.3.93"
     "prop-types" "^15.8.1"

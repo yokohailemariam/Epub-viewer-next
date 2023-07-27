@@ -53,7 +53,7 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
 
   return (
     <Wrapper screenMood={true}>
-      {fullScreen ? (
+      {/* {fullScreen ? (
         <button
           className={`fixed top-[${
             fullScreen ? 15 : 100
@@ -75,7 +75,7 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
             />
           </svg>
         </button>
-      ) : null}
+      ) : null} */}
       {/* 
       <button
         className={`fixed top-[${
@@ -101,13 +101,19 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
         location={location}
         url={urlQueryParam}
         locationChanged={locationChanged}
-        getRendition={(rendition) => {
-          renditionRef.current = rendition
-          renditionRef.current.themes.fontSize(`${size}%`)
-        }}
         tocChanged={(toc) => (tocRef.current = toc)}
         showToc={true}
         styles={ownStyles}
+        getRendition={(rendition) => {
+          const spine_get = rendition.book.spine.get.bind(rendition.book.spine)
+          rendition.book.spine.get = function (target) {
+            var t = spine_get(target)
+            if (!t) {
+              t = spine_get(undefined)
+            }
+            return t
+          }
+        }}
       />
       <p className='text-center mt-2'>{page}</p>
     </Wrapper>
