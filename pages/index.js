@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { Fragment, useState } from 'react'
-import Header from '../components/header/header'
 import Reader from '../components/reader/ereader'
 import { useRouter } from 'next/router'
 
@@ -17,6 +16,8 @@ export default function Home() {
     const url2 = url.replace(/^url=/, '')
 
     epubUrl = url2 + '?alt=media&' + 'token=' + token
+  } else {
+    epubUrl = router.query.url
   }
 
   const toggleFullScreen = () => {
@@ -31,7 +32,6 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className='w-full min-h-screen relative'>
-        {/* <Header toggleView={toggleFullScreen} /> */}
         {epubUrl && (
           <Reader
             urlQueryParam={epubUrl}

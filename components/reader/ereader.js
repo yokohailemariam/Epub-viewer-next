@@ -3,9 +3,8 @@ import Wrapper from './wrapper'
 import { ReactReader, ReactReaderStyle } from 'react-reader'
 
 // const storage = global.localStorage || null;
-const DEMO_URL = 'https://react-reader.metabits.no/files/alice.epub'
+// const DEMO_URL = 'https://react-reader.metabits.no/files/alice.epub'
 // const DEMO_URL = "Mustafa.epub";
-const DEMO_NAME = 'Alice in wonderland'
 function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
   const [background, setBackground] = useState('white')
   const [page, setPage] = useState('')
@@ -53,38 +52,6 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
 
   return (
     <Wrapper screenMood={true}>
-      {/* {fullScreen ? (
-        <button
-          className={`fixed top-[${
-            fullScreen ? 15 : 100
-          }px] right-[20px] z-50 bg-transparent border-0 flex items-center justify-center rounded w-12 h-12 shadow-lg`}
-          onClick={cancelFullScreen}
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 text-gray-400'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4'
-            />
-          </svg>
-        </button>
-      ) : null} */}
-      {/* 
-      <button
-        className={`fixed top-[${
-          fullScreen ? 15 : 100
-        }px] right-[86px] z-50 bg-transparent border-0 flex items-center justify-center rounded w-12 h-12 shadow-lg`}
-        onClick={() => setBackground("black")}
-      >
-        Black
-      </button> */}
       <select
         className='fixed top-[10px] right-[60px] px-4 py-3 rounded-full'
         onClick={changeSize}
@@ -104,6 +71,10 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
         tocChanged={(toc) => (tocRef.current = toc)}
         showToc={true}
         styles={ownStyles}
+        epubOptions={{
+          manager: 'continuous',
+          flow: 'scrolled'
+        }}
         getRendition={(rendition) => {
           const spine_get = rendition.book.spine.get.bind(rendition.book.spine)
           rendition.book.spine.get = function (target) {
