@@ -21,6 +21,17 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
       backgroundColor: background
     }
   }
+
+  const readerStyle = {
+    reader: {
+      position: 'absolute',
+      top: '8px',
+      left: '0px',
+      bottom: '80px',
+      right: '0px'
+    }
+  }
+
   // console.log(ReactReaderStyle)// this console will help to style
 
   const locationChanged = (epubcifi) => {
@@ -52,7 +63,7 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
 
   return (
     <Wrapper screenMood={true}>
-      <select
+      {/* <select
         className='fixed top-[10px] right-[60px] px-4 py-3 rounded-full'
         onClick={changeSize}
       >
@@ -62,7 +73,7 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
         <option value={160}>160%</option>
         <option value={180}>180%</option>
         <option value={200}>200%</option>
-      </select>
+      </select> */}
 
       <ReactReader
         location={location}
@@ -71,6 +82,7 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
         tocChanged={(toc) => (tocRef.current = toc)}
         showToc={true}
         styles={ownStyles}
+        readerStyles={readerStyle}
         epubOptions={{
           manager: 'continuous',
           flow: 'scrolled'
