@@ -27,7 +27,7 @@ function Reader({ fullScreen, cancelFullScreen, urlQueryParam }) {
       position: 'absolute',
       top: '8px',
       left: '0px',
-      bottom: '80px',
+      bottom: '8px',
       right: '0px'
     }
   }
